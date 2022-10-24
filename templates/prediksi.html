@@ -1,0 +1,144 @@
+           {% include 'header.html' %}
+            <div class="main-content container">
+                <div class="page-title">
+                    <h3>Prediksi</h3>
+                </div>
+                <div class="col-lg-8 card shadow py-3 px-2 mb-0 bg-secondary">
+
+                </div>  
+                <div class="card col-lg-8 py-20" >
+                    <div class="text-center mt-2">
+                        <h2>PREDIKSI DATA BARU</h2>
+                    </div>
+                     <div class="py-2 px-2 mt-3" align="center"> 
+                        <form action="{{url_for('prediksi')}}" method="POST" enctype="multipart/form-data">
+                            <div>
+                                <label for="nilai_k" class="form-label text-left">Masukan NIlai K</label>
+                                <input type="text" class="form-control" style="width: 600px;" id="nilai_k" name="nilai_k">
+                            </div>
+                            <div>
+                                <label for="formFile" class="form-label text-left">Pilih citra</label>
+                                <input class="form-control" style="width: 600px;" accept="image/*" type="file" id="imgInp" name="file">
+                            </div>
+                            
+                            <div class="text-center">
+                                <img src="#" class="img-fluid img-thumbnail my-2" width="400px" height="100px" style="background: none;" id="blah" alt="Masukan Gambar">
+                            </div> 
+                            <div class="text-center">
+                                <button class="btn btn-primary" type="submit">Prediksi</button>
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            {%if y_pred==1%}
+                            <h4>
+                                Hasil : Segar
+                            </h4>
+                            {%elif y_pred==2%}
+                            <h4>
+                                Hasil : Non Segar
+                            </h4>
+                            {%else%}
+                            <h4>
+                                Hasil : 
+                            </h4>
+                            {%endif%} 
+                        </div>
+                     </div>
+                </div>  
+                <div class="card col-lg-12 py-20" >
+                    <div class="py-2 px-2 mt-3" align="center"> 
+                        <h4>
+                            TABEL DATA BARU
+                        </h4>
+                       <div class="table-responsive">
+                           <table class="table table-bordered" id="example" class="display" style="width:100%">
+                           <thead>
+                               <tr>
+                               <th>No</th>
+                               <th>File Name</th>
+                               <th>Mean H</th>
+                               <th>Mean S</th>
+                               <th>Mean V</th>
+                               <th>Stdev H</th>
+                               <th>Stdev S</th>
+                               <th>Stdev V</th>
+                               <th>Skew H</th>
+                               <th>Skew S</th>
+                               <th>Skew V</th>
+                               <th>Label</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                           {%for dt in prediksi%}
+                               <tr>
+                                   <td>{{loop.index}}</td>
+                                   <td>{{dt.1}}</td>
+                                   <td>{{dt.2}}</td>
+                                   <td>{{dt.3}}</td>
+                                   <td>{{dt.4}}</td>
+                                   <td>{{dt.5}}</td>
+                                   <td>{{dt.6}}</td>
+                                   <td>{{dt.7}}</td>
+                                   <td>{{dt.8}}</td>
+                                   <td>{{dt.9}}</td>
+                                   <td>{{dt.10}}</td>
+                                   <td>{{dt.11}}</td>
+                               </tr>
+                           {%endfor%}                                                                                              
+                                                       
+                           </tbody>
+                           </table>
+                       </div>
+                    </div>
+               </div> 
+                <div class="card col-lg-12 py-20" >
+                     <div class="py-2 px-2 mt-3" align="center"> 
+                         <h4>
+                             TABEL DATA LATIH
+                         </h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="table1">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>File Name</th>
+                                <th>Mean H</th>
+                                <th>Mean S</th>
+                                <th>Mean V</th>
+                                <th>Stdev H</th>
+                                <th>Stdev S</th>
+                                <th>Stdev V</th>
+                                <th>Skew H</th>
+                                <th>Skew S</th>
+                                <th>Skew V</th>
+                                <th>Label</th>
+                                <th>Jarak</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {%for pd in data%}
+                                <tr>
+                                    <td>{{loop.index}}</td>
+                                    <td>{{pd.1}}</td>
+                                    <td>{{pd.2}}</td>
+                                    <td>{{pd.3}}</td>
+                                    <td>{{pd.4}}</td>
+                                    <td>{{pd.5}}</td>
+                                    <td>{{pd.6}}</td>
+                                    <td>{{pd.7}}</td>
+                                    <td>{{pd.8}}</td>
+                                    <td>{{pd.9}}</td>
+                                    <td>{{pd.10}}</td>
+                                    <td>{{pd.11}}</td>
+                                    <td>{{pd.12}}</td>
+                                </tr>
+                            {%endfor%}                                                                                              
+                                                        
+                            </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>                 
+            </div>
+            </div>
+        {% include 'footer.html' %}    

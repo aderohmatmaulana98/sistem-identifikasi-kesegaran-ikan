@@ -1,0 +1,70 @@
+           {% include 'header.html' %}
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <h3>Dataset</h3>
+                </div> 
+                <div class="col-lg-12 card shadow py-2 px-2 mb-0 bg-secondary">
+                    <div>
+                        <a href="{{url_for('ekstraksi_aksi')}}" class="btn btn-primary btn-sm ">Ekstraksi</a> 
+                    </div>
+                </div>
+                 
+                <div class="col-lg-12 mt-0" id="table-bordered">   
+                    <div class="card">
+                        <!-- <div class="my-2">                           
+                            <a href="{{url_for('ekstraksi_aksi')}}" class="btn btn-primary">Ekstraksi</a>
+                        </div>     -->
+                        <div class="card-header">
+                            <div class="text-left">
+                                <h5 class="text-center">TABEL HASIL EKSTRAKSI FITUR</h5>
+                            </div> 
+                        </div>
+                        <div class="card-body">                
+                        <div class="card-content">          
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="table1">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>File Name</th>
+                                <th>Mean H</th>
+                                <th>Mean S</th>
+                                <th>Mean V</th>
+                                <th>Stdev H</th>
+                                <th>Stdev S</th>
+                                <th>Stdev V</th>
+                                <th>Skew H</th>
+                                <th>Skew S</th>
+                                <th>Skew V</th>
+                                <th>Label</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {%for ef in data%}
+                                <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{ef.1}}</td>
+                                <td>{{ef.2}}</td>
+                                <td>{{ef.3}}</td>
+                                <td>{{ef.4}}</td>
+                                <td>{{ef.5}}</td>
+                                <td>{{ef.6}}</td>
+                                <td>{{ef.7}}</td>
+                                <td>{{ef.8}}</td>
+                                <td>{{ef.9}}</td>
+                                <td>{{ef.10}}</td>
+                                <td>{{ef.11}}</td>
+                                </tr>
+                            {%endfor%}                                                                                              
+                                                        
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                </div>
+            </div>
+            </div>
+        {% include 'footer.html' %}    

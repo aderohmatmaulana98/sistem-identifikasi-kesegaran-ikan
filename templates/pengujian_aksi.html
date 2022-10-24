@@ -1,0 +1,52 @@
+
+<div class="row">            
+                <div class="col-lg-5">                    
+                    <div class="card shadow">
+                        <div class="page-title pt-2 text-center">
+                            <h5>FORM PARAMETER</h5>
+                        </div> 
+                        <div class="px-3 py-3">
+                            <form action="{{url_for('pengujian_aksi')}}" method="POST">
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Masukan NIlai K</label>
+                                    <input type="text" class="form-control" id="nilai_k" name="nilai_k">
+                                </div>
+                                <div class="text-center pb-3">
+                                    <button type="submit" class="btn btn-primary col-lg-4">Submit</button>
+                                </div>                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="card shadow">
+                        <div class="page-title pt-2 text-center">
+                            <h5>TABEL HASIL PENGUJIAN</h5>
+                        </div> 
+                        <div class="px-3 py-3">
+                            <table class="table">                               
+                                    <tr>
+                                        <th>Jarak</th>
+                                        <th>Kebenaran</th>
+                                        <th>Jumlah</th>
+                                        <th>Akurasi</th>                                    
+                                    </tr>                                
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2">Euclidean</td>
+                                        <td>Benar</td>
+                                        <td>40</td>
+                                        {%for ak in akur%}
+                                        <td rowspan="2">{{ak}}</td>
+                                        {%endfor%}
+                                    </tr>
+                                    <tr>
+                                        <td>Salah</td>
+                                        <td>40</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>     

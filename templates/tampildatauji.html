@@ -1,0 +1,114 @@
+           {% include 'header.html' %}
+            <div class="main-content container-fluid">
+                <div class="page-title">
+                    <h3>Data Uji</h3>
+                </div>              
+              
+                 <div class="col-lg-12 card shadow py-2 px-2 mb-0 bg-secondary">
+                    <div>
+                        <!-- Button trigger modal -->                    
+                        <div class="">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Tambah Data Uji
+                            </button>
+                            <span class="justify-content-end">
+                                <a href="{{url_for('import_data_uji')}}" class="btn btn-primary ">Import Data Uji</a>
+                            </span>
+                            
+                        </div>                                      
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Data Uji</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{url_for('tambah_data_uji')}}" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Upload data uji</label>
+                                            <input class="form-control" accept="image/*" type="file" id="imgInp" name="file">
+                                            <div>
+                                                <img src="#" class="img-thumbnail" id="blah" alt="..." height="100" width="100">
+                                            </div>    
+                                            <label for="kesegaran">Kesegaran</label>     
+                                            <select class="form-select" name="kesegaran" aria-label="Default select example">
+                                                <option selected>Pilih Kesegaran</option>
+                                                <option value="1">Segar</option>
+                                                <option value="2">Non Segar</option>
+                                              </select>                          
+                                        </div>                                                                                                           
+                                    
+                                </div>
+                                <div class="modal-footer">
+                                <a href="{{url_for('pengujian')}}" type="button" class="btn btn-secondary" >Reset</a>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                            </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+                <div class="col-lg-12 mt-0" id="table-bordered">   
+                    <div class="card">
+                        <!-- <div class="my-2">                           
+                            <a href="{{url_for('ekstraksi_aksi')}}" class="btn btn-primary">Ekstraksi</a>
+                        </div>     -->
+                        <div class="card-header">
+                            <div class="text-left">
+                                <h5 class="text-center">TABEL DATA UJI</h5>
+                            </div> 
+                        </div>
+                        <div class="card-body">                
+                        <div class="card-content">          
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="table1">
+                            <thead>
+                                <tr>
+                                <th>No</th>
+                                <th>File Name</th>
+                                <th>Mean H</th>
+                                <th>Mean S</th>
+                                <th>Mean V</th>
+                                <th>Stdev H</th>
+                                <th>Stdev S</th>
+                                <th>Stdev V</th>
+                                <th>Skew H</th>
+                                <th>Skew S</th>
+                                <th>Skew V</th>
+                                <th>Label</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {%for uji in data%}
+                                <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{uji.1}}</td>
+                                <td>{{uji.2}}</td>
+                                <td>{{uji.3}}</td>
+                                <td>{{uji.4}}</td>
+                                <td>{{uji.5}}</td>
+                                <td>{{uji.6}}</td>
+                                <td>{{uji.7}}</td>
+                                <td>{{uji.8}}</td>
+                                <td>{{uji.9}}</td>
+                                <td>{{uji.10}}</td>
+                                <td>{{uji.11}}</td>
+                                </tr>
+                            {%endfor%}                                                                                            
+                                                        
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div> 
+                </div>            
+            </div>
+            </div>
+        {% include 'footer.html' %}    
